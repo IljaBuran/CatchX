@@ -38,14 +38,14 @@ void PrintTheArray(int array[SIZE][SIZE], bool isBeginning)
 
 int main()
 {
-    Position current;
-    Position previous;
-    current.position_x = SIZE/2, current.position_y = SIZE/2; /* Declaring variables */
-    int array[SIZE][SIZE] = {{0}}; /* Sets 0s in whole array */
-    char character = '\0';
+    Position player_current, player_previous;                                                 /**/
+    Position point_current, point_previous;                                                   /**/
+    player_current.position_x = SIZE/2, player_current.position_y = SIZE/2;         /* Declaring variables */
+    int array[SIZE][SIZE] = {{0}}; /* Sets 0s in whole array */                               /**/
+    char character = '\0';                                                                    /**/
 
     // BEGIN
-    array[current.position_x][current.position_y] = 1; /* Sets 1 as player's position  */
+    array[player_current.position_x][player_current.position_y] = 1; /* Sets 1 as player's position */
 
     printf("PRESS ENTER TO START GAME");
 
@@ -70,73 +70,73 @@ int main()
         switch(character) 
         {
             case 'w': /* UP */
-                if (current.position_x != 0) /* Case: player IS NOT edge of playing board */
+                if (player_current.position_x != 0) /* Case: player IS NOT edge of playing board */
                 {
-                previous = current;                                        /* Sets player's current position as previous */
-                    array[previous.position_x][previous.position_y] = 0;   /* Sets 0 to previous position */
-                    current.position_x -= 1;                               /* Changes position according to player's choice */
-                    array[current.position_x][current.position_y] = 1;     /* Sets 1 to current position */
+                player_previous = player_current;                                        /* Sets player's player_current position as player_previous */
+                    array[player_previous.position_x][player_previous.position_y] = 0;   /* Sets 0 to player_previous position */
+                    player_current.position_x -= 1;                                      /* Changes position according to player's choice */
+                    array[player_current.position_x][player_current.position_y] = 1;     /* Sets 1 to player_current position */
                 }
                 else /* Case: player IS on edge of playing board */
                 {
-                    previous = current;
-                    array[previous.position_x][previous.position_y] = 0;
-                    current.position_x = SIZE - 1;
-                    array[current.position_x][current.position_y] = 1;
+                    player_previous = player_current;
+                    array[player_previous.position_x][player_previous.position_y] = 0;
+                    player_current.position_x = SIZE - 1;
+                    array[player_current.position_x][player_current.position_y] = 1;
                 }
                 system("cls"); PrintTheArray(array, true);
                 break;
             
             case 's': /* DOWN */
-                if (current.position_x != SIZE - 1)
+                if (player_current.position_x != SIZE - 1)
                 {
-                    previous = current;
-                    array[previous.position_x][previous.position_y] = 0;
-                    current.position_x += 1;
-                    array[current.position_x][current.position_y] = 1;
+                    player_previous = player_current;
+                    array[player_previous.position_x][player_previous.position_y] = 0;
+                    player_current.position_x += 1;
+                    array[player_current.position_x][player_current.position_y] = 1;
                 }
                 else
                 {
-                    previous = current;
-                    array[previous.position_x][previous.position_y] = 0;
-                    current.position_x = 0;
-                    array[current.position_x][current.position_y] = 1;
+                    player_previous = player_current;
+                    array[player_previous.position_x][player_previous.position_y] = 0;
+                    player_current.position_x = 0;
+                    array[player_current.position_x][player_current.position_y] = 1;
                 }
                 system("cls"); PrintTheArray(array, true);
                 break;
             
             case 'd': /* RIGHT */
-                if (current.position_y != SIZE - 1)
+                if (player_current.position_y != SIZE - 1)
                 {
-                    previous = current;
-                    array[previous.position_x][previous.position_y] = 0;
-                    current.position_y += 1;
-                    array[current.position_x][current.position_y] = 1;
+                    player_previous = player_current;
+                    array[player_previous.position_x][player_previous.position_y] = 0;
+                    player_current.position_y += 1;
+                    array[player_current.position_x][player_current.position_y] = 1;
                 }
                 else
                 {
-                    previous = current;
-                    array[previous.position_x][previous.position_y] = 0;
-                    current.position_y = 0;
-                    array[current.position_x][current.position_y] = 1;
+                    player_previous = player_current;
+                    array[player_previous.position_x][player_previous.position_y] = 0;
+                    player_current.position_y = 0;
+                    array[player_current.position_x][player_current.position_y] = 1;
                 }
                 system("cls"); PrintTheArray(array, true);
                 break;
             
             case 'a': /* LEFT */
-                if (current.position_y != 0)
+                if (player_current.position_y != 0)
                 {
-                    previous = current;
-                    array[previous.position_x][previous.position_y] = 0;
-                    current.position_y -= 1;
-                    array[current.position_x][current.position_y] = 1;
+                    player_previous = player_current;
+                    array[player_previous.position_x][player_previous.position_y] = 0;
+                    player_current.position_y -= 1;
+                    array[player_current.position_x][player_current.position_y] = 1;
                 }
                 else
                 {
-                    previous = current;
-                    array[previous.position_x][previous.position_y] = 0;
-                    current.position_y = SIZE - 1;
-                    array[current.position_x][current.position_y] = 1;
+                    player_previous = player_current;
+                    array[player_previous.position_x][player_previous.position_y] = 0;
+                    player_current.position_y = SIZE - 1;
+                    array[player_current.position_x][player_current.position_y] = 1;
                 }
                 system("cls"); PrintTheArray(array, true);
                 break;
