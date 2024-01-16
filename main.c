@@ -1,3 +1,5 @@
+/* ATTENTION: 'position_x' and 'position_y' and reversed to normal logic of mathematica - not (x,y) */
+
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
@@ -68,14 +70,14 @@ int main()
         switch(character) 
         {
             case 'w': /* UP */
-                if (current.position_x != 0)
+                if (current.position_x != 0) /* Case: player IS NOT edge of playing board */
                 {
-                    previous = current; 
-                    array[previous.position_x][previous.position_y] = 0; 
-                    current.position_x -= 1;
-                    array[current.position_x][current.position_y] = 1;
+                previous = current;                                        /* Sets player's current position as previous */
+                    array[previous.position_x][previous.position_y] = 0;   /* Sets 0 to previous position */
+                    current.position_x -= 1;                               /* Changes position according to player's choice */
+                    array[current.position_x][current.position_y] = 1;     /* Sets 1 to current position */
                 }
-                else
+                else /* Case: player IS on edge of playing board */
                 {
                     previous = current;
                     array[previous.position_x][previous.position_y] = 0;
@@ -144,6 +146,6 @@ int main()
     }
     
     
-    
+    /* Programs exits with 0 */
     return 0;
 }
