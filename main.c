@@ -17,7 +17,7 @@ typedef struct
     int position_y;
 }Position;
 
-void PrintTheArray(char array[SIZE][SIZE], bool isBeginning, int points)
+void PrintPlayingBoard(char array[SIZE][SIZE], bool isBeginning, int points)
 {
     for (size_t i = 0; i < SIZE + 2; i++)
     {
@@ -85,7 +85,7 @@ int main()
             point_current.position_x = rand() % SIZE;
             point_current.position_y = rand() % SIZE;
             array[point_current.position_x][point_current.position_y] = 'X';
-            system("cls"); PrintTheArray(array, false, points);
+            system("cls"); PrintPlayingBoard(array, false, points);
             break;
         }
         if (character == esc)
@@ -122,7 +122,7 @@ int main()
                     array[player_current.position_x][player_current.position_y] = 'O';
                     moves++;
                 }
-                system("cls"); PrintTheArray(array, true, points);
+                system("cls"); PrintPlayingBoard(array, true, points);
                 break;
             
             case 's': /* DOWN */
@@ -142,7 +142,7 @@ int main()
                     array[player_current.position_x][player_current.position_y] = 'O';
                     moves++;
                 }
-                system("cls"); PrintTheArray(array, true, points);
+                system("cls"); PrintPlayingBoard(array, true, points);
                 break;
             
             case 'd': /* RIGHT */
@@ -162,7 +162,7 @@ int main()
                     array[player_current.position_x][player_current.position_y] = 'O';
                     moves++;
                 }
-                system("cls"); PrintTheArray(array, true, points);
+                system("cls"); PrintPlayingBoard(array, true, points);
                 break;
             
             case 'a': /* LEFT */
@@ -182,10 +182,10 @@ int main()
                     array[player_current.position_x][player_current.position_y] = 'O';
                     moves++;
                 }
-                system("cls"); PrintTheArray(array, true, points);
+                system("cls"); PrintPlayingBoard(array, true, points);
                 break;
             default:
-                system("cls"); PrintTheArray(array, true, points);
+                system("cls"); PrintPlayingBoard(array, true, points);
         }
         
         if (player_current.position_x == point_current.position_x && player_current.position_y == point_current.position_y)
@@ -193,7 +193,7 @@ int main()
             points += 1;
             if (points == 10)
             {
-                system("cls"); PrintTheArray(array, true, points);
+                system("cls"); PrintPlayingBoard(array, true, points);
                 printf("Moves: %d\n", moves);
                 printf("You won!\n");
                 while(1) /* Loop waiting for ENTER to start game */
@@ -211,7 +211,7 @@ int main()
                         QuitSeq();
                         return 0;
                     }
-                    system("cls"); PrintTheArray(array, true, points);
+                    system("cls"); PrintPlayingBoard(array, true, points);
                     printf("Moves: %d\n", moves);
                     printf("You won!\n");
                 }
@@ -219,7 +219,7 @@ int main()
             point_current.position_x = rand() % SIZE;
             point_current.position_y = rand() % SIZE;
             array[point_current.position_x][point_current.position_y] = 'X';
-            system("cls"); PrintTheArray(array, true, points);
+            system("cls"); PrintPlayingBoard(array, true, points);
         }
     }
     
