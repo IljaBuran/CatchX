@@ -65,15 +65,15 @@ void QuitSeq()
 
 int main()
 {
-    Position player_current, player_previous;                                                 /**/
-    Position point_current;                                                                   /**/
-    player_current.position_x = SIZE/2, player_current.position_y = SIZE/2;         /* Declaring variables */
+    Position player;                                                                  /**/
+    Position point;                                                                   /**/
+    player.position_x = SIZE/2, player.position_y = SIZE/2;         /* Declaring variables */
     char array[SIZE][SIZE]; memset(array, ' ', sizeof(array));                      /* Sets 0s in whole array */
     char character = '\0';                                                                    /**/
     int points = 0, moves = 0;                                                                /**/
 
     // BEGIN
-    array[player_current.position_x][player_current.position_y] = 'O'; /* Sets 1 as player's position */
+    array[player.position_x][player.position_y] = 'O'; /* Sets 1 as player's position */
 
     printf("PRESS ENTER TO START GAME");
 
@@ -82,9 +82,9 @@ int main()
         character = getche();
         if (character == enter)
         {
-            point_current.position_x = rand() % SIZE;
-            point_current.position_y = rand() % SIZE;
-            array[point_current.position_x][point_current.position_y] = 'X';
+            point.position_x = rand() % SIZE;
+            point.position_y = rand() % SIZE;
+            array[point.position_x][point.position_y] = 'X';
             system("cls"); PrintPlayingBoard(array, false, points);
             break;
         }
@@ -106,80 +106,72 @@ int main()
         switch(character) 
         {
             case 'w': /* UP */
-                if (player_current.position_x != 0) /* Case: player IS NOT edge of playing board */
+                if (player.position_x != 0) /* Case: player IS NOT edge of playing board */
                 {
-                    player_previous = player_current;                                    /* Sets player's player_current position as player_previous */
-                    array[player_previous.position_x][player_previous.position_y] = ' ';   /* Sets ' ' to player_previous position */
-                    player_current.position_x -= 1;                                      /* Changes position according to player's choice */
-                    array[player_current.position_x][player_current.position_y] = 'O';     /* Sets 'O' to player_current position */
+                    array[player.position_x][player.position_y] = ' ';   /* Sets ' ' to player_previous position */
+                    player.position_x -= 1;                              /* Changes position according to player's choice */
+                    array[player.position_x][player.position_y] = 'O';   /* Sets 'O' to player position */
                     moves++;
                 }
                 else /* Case: player IS on edge of playing board */
                 {
-                    player_previous = player_current;
-                    array[player_previous.position_x][player_previous.position_y] = ' ';
-                    player_current.position_x = SIZE - 1;
-                    array[player_current.position_x][player_current.position_y] = 'O';
+                    array[player.position_x][player.position_y] = ' ';
+                    player.position_x = SIZE - 1;
+                    array[player.position_x][player.position_y] = 'O';
                     moves++;
                 }
                 system("cls"); PrintPlayingBoard(array, true, points);
                 break;
             
             case 's': /* DOWN */
-                if (player_current.position_x != SIZE - 1)
+                if (player.position_x != SIZE - 1)
                 {
-                    player_previous = player_current;
-                    array[player_previous.position_x][player_previous.position_y] = ' ';
-                    player_current.position_x += 1;
-                    array[player_current.position_x][player_current.position_y] = 'O';
+                    array[player.position_x][player.position_y] = ' ';
+                    player.position_x += 1;
+                    array[player.position_x][player.position_y] = 'O';
                     moves++;
                 }
                 else
                 {
-                    player_previous = player_current;
-                    array[player_previous.position_x][player_previous.position_y] = ' ';
-                    player_current.position_x = 0;
-                    array[player_current.position_x][player_current.position_y] = 'O';
+                    array[player.position_x][player.position_y] = ' ';
+                    player.position_x = 0;
+                    array[player.position_x][player.position_y] = 'O';
                     moves++;
                 }
                 system("cls"); PrintPlayingBoard(array, true, points);
                 break;
             
             case 'd': /* RIGHT */
-                if (player_current.position_y != SIZE - 1)
+                if (player.position_y != SIZE - 1)
                 {
-                    player_previous = player_current;
-                    array[player_previous.position_x][player_previous.position_y] = ' ';
-                    player_current.position_y += 1;
-                    array[player_current.position_x][player_current.position_y] = 'O';
+                    array[player.position_x][player.position_y] = ' ';
+                    player.position_y += 1;
+                    array[player.position_x][player.position_y] = 'O';
                     moves++;
                 }
                 else
                 {
-                    player_previous = player_current;
-                    array[player_previous.position_x][player_previous.position_y] = ' ';
-                    player_current.position_y = 0;
-                    array[player_current.position_x][player_current.position_y] = 'O';
+                    array[player.position_x][player.position_y] = ' ';
+                    player.position_y = 0;
+                    array[player.position_x][player.position_y] = 'O';
                     moves++;
                 }
                 system("cls"); PrintPlayingBoard(array, true, points);
                 break;
             
             case 'a': /* LEFT */
-                if (player_current.position_y != 0)
+                if (player.position_y != 0)
                 {
-                    player_previous = player_current;
-                    array[player_previous.position_x][player_previous.position_y] = ' ';
-                    player_current.position_y -= 1;
-                    array[player_current.position_x][player_current.position_y] = 'O';
+                    array[player.position_x][player.position_y] = ' ';
+                    player.position_y -= 1;
+                    array[player.position_x][player.position_y] = 'O';
                     moves++;
                 }
                 else
                 {
-                    player_previous = player_current;
-                    array[player_previous.position_x][player_previous.position_y] = ' ';
-                    player_current.position_y = SIZE - 1;
-                    array[player_current.position_x][player_current.position_y] = 'O';
+                    array[player.position_x][player.position_y] = ' ';
+                    player.position_y = SIZE - 1;
+                    array[player.position_x][player.position_y] = 'O';
                     moves++;
                 }
                 system("cls"); PrintPlayingBoard(array, true, points);
@@ -188,7 +180,7 @@ int main()
                 system("cls"); PrintPlayingBoard(array, true, points);
         }
         
-        if (player_current.position_x == point_current.position_x && player_current.position_y == point_current.position_y)
+        if (player.position_x == point.position_x && player.position_y == point.position_y)
         {
             points += 1;
             if (points == 10)
@@ -216,9 +208,9 @@ int main()
                     printf("You won!\n");
                 }
             }
-            point_current.position_x = rand() % SIZE;
-            point_current.position_y = rand() % SIZE;
-            array[point_current.position_x][point_current.position_y] = 'X';
+            point.position_x = rand() % SIZE;
+            point.position_y = rand() % SIZE;
+            array[point.position_x][point.position_y] = 'X';
             system("cls"); PrintPlayingBoard(array, true, points);
         }
     }
