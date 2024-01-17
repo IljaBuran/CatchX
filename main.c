@@ -67,10 +67,10 @@ int main()
 {
     Position player;                                                                  /**/
     Position point;                                                                   /**/
-    player.position_x = SIZE/2, player.position_y = SIZE/2;         /* Declaring variables */
-    char array[SIZE][SIZE]; memset(array, ' ', sizeof(array));                      /* Sets 0s in whole array */
-    char character = '\0';                                                                    /**/
-    int points = 0, moves = 0;                                                                /**/
+    player.position_x = SIZE/2, player.position_y = SIZE/2;                  /* Declaring variables */
+    char array[SIZE][SIZE]; memset(array, ' ', sizeof(array));             /* Sets 0s in whole array */
+    char character = '\0';                                                            /**/
+    int points = 0, moves = 0;                                                        /**/
 
     // BEGIN
     array[player.position_x][player.position_y] = 'O'; /* Sets 1 as player's position */
