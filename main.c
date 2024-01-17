@@ -41,10 +41,8 @@ void PrintTheArray(char array[SIZE][SIZE], bool isBeginning, int points)
     {
         printf("#");
     }
-
-    printf("\n");
     
-    printf("\n"); /* prints extra line */
+    printf("\n\n"); /* prints extra 2 lines */
 
     if (isBeginning == false) /* Prints controls on the beginning */ 
     {
@@ -53,6 +51,15 @@ void PrintTheArray(char array[SIZE][SIZE], bool isBeginning, int points)
     else
     {
         printf("Points: %d\n\n", points);
+    }
+}
+
+void QuitSeq()
+{
+    for (float i = 1.0; i > 0.0; i = i - 0.1)
+    {
+        printf("%.1f\n", i);
+        Sleep(80);
     }
 }
 
@@ -80,6 +87,11 @@ int main()
             array[point_current.position_x][point_current.position_y] = 'X';
             system("cls"); PrintTheArray(array, false, points);
             break;
+        }
+        if (character == esc)
+        {
+            QuitSeq();
+            return 0;
         }
         system("cls"); printf("PRESS ENTER TO START GAME");
     }
@@ -196,6 +208,7 @@ int main()
                     }
                     if (character == esc)
                     {
+                        QuitSeq();
                         return 0;
                     }
                     system("cls"); PrintTheArray(array, true, points);
@@ -210,6 +223,7 @@ int main()
         }
     }
     
+    QuitSeq();
     
     /* Programs exits with 0 */
     return 0;
