@@ -9,7 +9,7 @@
 #define esc 27
 #define enter 13
 
-#define SIZE 16 /* Size of playing board */
+#define SIZE 10 /* Size of playing board */
 
 typedef struct
 {
@@ -19,14 +19,30 @@ typedef struct
 
 void PrintTheArray(char array[SIZE][SIZE], bool isBeginning, int points)
 {
+    for (size_t i = 0; i < SIZE + 2; i++)
+    {
+        printf("#");
+    }
+    
+    printf("\n");
+
     for (int i = 0; i < SIZE; i++)
     {
+        printf("#");
         for (int j = 0; j < SIZE; j++)
         {
             printf("%c", array[i][j]);  /* Prints playing board */
         }
+        printf("#");
         printf("\n");
     }
+
+    for (size_t i = 0; i < SIZE + 2; i++)
+    {
+        printf("#");
+    }
+
+    printf("\n");
     
     printf("\n"); /* prints extra line */
 
